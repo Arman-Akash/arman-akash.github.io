@@ -68,7 +68,9 @@ export const sections = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
+  // Disabled while the Projects section is commented out in App.tsx - a nav link
+  // to a section that is not rendered would scroll nowhere. Re-enable both together.
+  // { id: 'projects', label: 'Projects' },
   { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
 ] as const

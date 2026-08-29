@@ -5,7 +5,6 @@ import { ExperienceList } from './components/ExperienceList'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Nav } from './components/Nav'
-import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 
 export default function App() {
@@ -25,7 +24,10 @@ export default function App() {
         <About />
         <ExperienceList />
         <Skills />
-        {/* <Projects /> */}
+        {/* Projects section hidden. To restore: uncomment <Projects /> below, re-add
+            `import { Projects } from './components/Projects'`, and re-enable the
+            'projects' entry in `sections` in src/data/profile.ts so the nav link works.
+        <Projects /> */}
         <EducationList />
         <Contact />
       </main>
