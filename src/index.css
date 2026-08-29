@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+
+/* Class-based dark mode, toggled on <html> by useTheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Semantic tokens live in :root / .dark so both themes stay in lockstep, and
+ * `@theme inline` maps them onto Tailwind utilities (bg-surface, text-muted,
+ * border-line, ...) so the utility resolves the variable at use time and
+ * swaps automatically with the theme.
+ */
+:root {
+  --page: #ffffff;
+  --surface: #f8fafc;
+  --surface-2: #f1f5f9;
+  --line: #e2e8f0;
+  --ink: #0f172a;
+  --ink-muted: #52627a;
+  --ink-subtle: #64748b;
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --accent-ink: #ffffff;
+  --accent-soft: #ccfbf1;
+  --ring: #14b8a6;
+}
+
+.dark {
+  --page: #0a0f1a;
+  --surface: #111a29;
+  --surface-2: #172234;
+  --line: #1e2b3f;
+  --ink: #e6edf5;
+  --ink-muted: #9fb0c4;
+  --ink-subtle: #8496ab;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --accent-ink: #06231f;
+  --accent-soft: #123b37;
+  --ring: #2dd4bf;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-subtle: var(--ink-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-ring: var(--ring);
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header is 4rem tall; keep anchored sections clear of it. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+}
+
+@layer components {
+  /*
+   * Entrance animation, CSS-only and scroll-driven. Deliberately NOT
+   * JavaScript-driven: the base state is fully visible, and the fade is layered
+   * on only where `animation-timeline` is supported. A browser without it - or
+   * with scripting off - simply shows the content. Nothing can leave the page
+   * stuck at opacity 0, which on a CV site is the one failure that matters.
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 40%;
+      }
+    }
+  }
+
+  @keyframes reveal-in {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hide the print-hostile chrome if anyone prints the page. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

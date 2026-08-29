@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Arman Hossain — Senior Programmer, C#/.NET</title>
+    <meta
+      name="description"
+      content="Arman Hossain is a senior programmer in Dhaka with nine years of experience building ERP, inventory, and sales and distribution systems in C# and ASP.NET Core."
+    />
+    <meta name="author" content="Arman Hossain" />
+    <link rel="canonical" href="https://arman-akash.github.io/" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arman-akash.github.io/" />
+    <meta property="og:title" content="Arman Hossain — Senior Programmer, C#/.NET" />
+    <meta
+      property="og:description"
+      content="Nine years building ERP, inventory, and sales and distribution systems in C# and ASP.NET Core."
+    />
+    <meta property="og:image" content="https://arman-akash.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Arman Hossain",
+        "jobTitle": "Senior Programmer",
+        "email": "mailto:arman.akash470@gmail.com",
+        "url": "https://arman-akash.github.io/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dhaka",
+          "addressCountry": "BD"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Square Informatix Limited"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "American International University-Bangladesh"
+        },
+        "knowsAbout": [
+          "C#",
+          "ASP.NET Core",
+          "Entity Framework",
+          "Microsoft SQL Server",
+          "React",
+          "Microservices"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/arman-akash",
+          "https://github.com/arman-akash"
+        ]
+      }
+    </script>
+
+    <script>
+      // Applies the stored theme before first paint, so returning dark-mode
+      // visitors never see a flash of the light background. Mirrors useTheme.
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var dark =
+            stored === 'dark' ||
+            (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          if (dark) document.documentElement.classList.add('dark')
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+        } catch (e) {
+          /* Blocked storage - fall back to the light theme. */
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
